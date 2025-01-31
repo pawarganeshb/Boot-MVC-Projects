@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Poll List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        h3 {
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Poll List</h1>
+    <ul>
+        <li th:each="poll : ${polls}">
+            <h3 th:text="${poll.title}"></h3>
+            <p th:text="${poll.description}"></p>
+            <a th:href="@{/poll/{id}(id=${poll.id})}">View Details</a>
+        </li>
+    </ul>
+    <a th:href="@{/create}">Create a New Poll</a>
+</body>
+</html>
